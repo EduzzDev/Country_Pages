@@ -118,8 +118,8 @@ function App() {
           className="relative h-70 lg:top-0 top-16 object-cover  lg:h-full w-full"
           src="/src/assets/hero-image.jpg"
           srcSet="
-            /src/assets/hero-image-sm.jpg 480w,
-           /src/assets/hero-image.jpg 1200w"
+            /assets/hero-image-sm.jpg 480w,
+           /assets/hero-image.jpg 1200w"
           sizes="100%"
           alt="imagem do globo"
         />
