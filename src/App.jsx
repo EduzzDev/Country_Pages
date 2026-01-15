@@ -5,6 +5,9 @@ import Hover from "./components/Hover";
 import InputCheck from "./components/InputCheck";
 import { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
+import heroImage from "./assets/hero-image.jpg";
+import heroImageSm from "./assets/hero-image-sm.jpg";
+import logoSvg from "./assets/Logo.svg";
 
 function App() {
   // Estados (State)
@@ -116,16 +119,14 @@ function App() {
       <header className="w-full bg-black justify-center flex lg:justify-center lg:items-center">
         <img
           className="relative h-70 lg:top-0 top-16 object-cover  lg:h-full w-full"
-          src="/src/assets/hero-image.jpg"
-          srcSet="
-            /src/assets/hero-image-sm.jpg 480w,
-           /src/assets/hero-image.jpg 1200w"
+          src={heroImage}
+          srcSet={`${heroImageSm} 480w, ${heroImage} 1200w`}
           sizes="100%"
           alt="imagem do globo"
         />
         <img
           className="absolute lg:top-[15dvw] top-15 w-50"
-          src="/src/assets/Logo.svg"
+          src={logoSvg}
           alt="Logo"
         />
       </header>
