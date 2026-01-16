@@ -129,7 +129,7 @@ function App() {
         />
       </header>
       <main className="w-full lg:min-w-5xl mx-auto px-4 font-[Be_Vietnam_Pro, sans-serif] bg-[#1B1D1F]">
-        <div className="lg:w-[95dvw] w-[90dvw] bottom-25 left-[2dvw] h-390 lg:h-260  lg:flex-col lg:bottom-15 relative lg:ml-6.5 shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]">
+        <div className="lg:w-[95dvw] overflow-x-hidden w-[90dvw] bottom-25 left-[2dvw] h-390 lg:h-260  lg:flex-col lg:bottom-15 relative lg:ml-6.5 shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]">
           <h2 className="text-[#D2D5DA] -ml-4 text-[20px] lg:text-[22px] lg:ml-6 font-medium">
             Found 234 countries
           </h2>
@@ -332,7 +332,7 @@ function App() {
             </div>
           </div>
           {/* mobile */}
-          <div className="w-screen px-4 mt-8 flex justify-center">  
+          <div className="w-screen px-4 mt-8 flex justify-center">
             <div className="w-full min-[600px]:hidden relative right-12.5 overflow-x-auto bg-[#1C1E21] rounded-lg border border-[#282B30]">
               <div className="min-w-120">
                 {/* Cabeçalho */}
@@ -362,7 +362,9 @@ function App() {
                           <span className="font-semibold truncate">
                             {c.name.common}
                           </span>
-                          <div className="truncate">{c.population?.toLocaleString()}</div>
+                          <div className="truncate">
+                            {c.population?.toLocaleString()}
+                          </div>
                           <div>{c.area ? c.area.toLocaleString() : "-"}</div>
                           <div>{c.region}</div>
                         </div>
