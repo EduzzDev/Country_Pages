@@ -14,7 +14,7 @@ function App() {
   const [countries, setCountries] = useState([]); // Paises
   const [inputValue, setInputValue] = useState(""); /// input
   const [filterRegions, setFilterRegions] = useState([]); // filtro de regiões
-  const [countriesData, setCountriesData] = useState([])
+  const [countriesData, setCountriesData] = useState([]);
   const [filterUn, setFilterUn] = useState(false); // filtro dos paises das nations united
   const [filterIndependent, setFilterIndependent] = useState(false); // filtro dos paises independentes
 
@@ -65,14 +65,14 @@ function App() {
         data = data.filter((c) => c.name.common.toLowerCase().includes(query));
       }
       //armazenando os dados brutos
-      setCountriesData(data)
+      setCountriesData(data);
 
       //limitando a quantidade dados
       const limit = data.slice(0, 13);
       setCountries(Array.isArray(limit) ? limit : []);
       //limpando o input
       //setInputValue("");
-      setFilterRegions('');
+      setFilterRegions("");
       //verificando se há um erro caso tenha retorna um array vazio
     } catch (err) {
       console.error(err);
@@ -95,24 +95,22 @@ function App() {
     setFilterIndependent(!filterIndependent);
   }
 
-  useEffect (()=> {
-    if(countriesData === 0) return;
+  useEffect(() => {
+    if (countriesData === 0) return;
 
     let filtered = [...countriesData];
 
-    if(filterUn) {
-      filtered = filtered.filter((c) => c.unMember === true)
+    if (filterUn) {
+      filtered = filtered.filter((c) => c.unMember === true);
     }
-    if(filterIndependent){
-      filtered = filtered.filter((c) => c.independent === true)
+    if (filterIndependent) {
+      filtered = filtered.filter((c) => c.independent === true);
     }
-     
-    //limitar tamanho 
-    const limit = filtered.slice(0,13);
+
+    //limitar tamanho
+    const limit = filtered.slice(0, 13);
     setCountries(Array.isArray(limit) ? limit : []);
-
-  }, [filterUn, filterIndependent,countriesData]);
-
+  }, [filterUn, filterIndependent, countriesData]);
 
   return (
     <>
@@ -247,7 +245,7 @@ function App() {
               </div>
             </section>
           </div>
-          <div className="flex justify-center w-full absolute lg:top-12 xl:top-15 mt-16 text-[#D2D5DA] font-medium  pl-18">
+          <div className="flex justify-center w-full max-[480px]:hidden absolute lg:top-12 xl:top-15 mt-16 text-[#D2D5DA] font-medium  pl-18">
             <div className=" text-[3.8dvw] min-[500px]:text-[14px] lg:text-[14px]  lg:w-[70%] w-full bottom-10 md:bottom-0 right-22 lg:right-0 lg:left-25 relative grid grid-cols-5 gap-x-6 lg:gap-x-24 border-b border-b-[#282B30] pb-6">
               <div className=" relative min-[600px]:left-5 lg:left-1">
                 <h3>Flag</h3>
@@ -266,7 +264,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className=" absolute top-148 md:top-130 w-full  lg:top-45 lg:w-full text-[#D2D5DA] font-medium  flex lg:justify-center lg:pl-10">
+          <div className=" absolute top-148 md:top-130 w-full max-[480px]:hidden  lg:top-45 lg:w-full text-[#D2D5DA] font-medium  flex lg:justify-center lg:pl-10">
             <div className="md:text-[16px] max-[480px]:w-[125dvw] max-[480px]:text-[10px]  absolute w-full lg:w-[70%] xl:right-5.5 lg:-right-6  grid gap-y-7">
               {countries && countries.length > 0 ? (
                 countries.map((c) => (
@@ -281,16 +279,16 @@ function App() {
                         className="w-15 h-8 object-cover"
                       />
                     </div>
-                    <span className=" relative right-12 lg:right-18 font-semibold">
+                    <span className=" relative   right-12 lg:right-18 font-semibold">
                       {c.name.common}
                     </span>
-                    <div className=" relative right-17 lg:right-15">
+                    <div className=" relative  right-17 lg:right-15">
                       {c.population?.toLocaleString()}
                     </div>
-                    <div className="relative right-21 lg:right-12">
+                    <div className="relative   right-21  lg:right-12">
                       {c.area ? c.area.toLocaleString() : "-"}
                     </div>
-                    <div className="relative right-30 lg:right-13">
+                    <div className="relative  right-30 lg:right-13">
                       {c.region}
                     </div>
                   </div>
@@ -317,7 +315,7 @@ function App() {
                       {Array.from({ length: 4 }).map((_, colIdx) => (
                         <div
                           key={colIdx}
-                          className="flex justify-items-start relative lg:left-2"
+                          className="flex justify-items-start  relative lg:left-2"
                         >
                           <Skeleton
                             className="lg:w-13 w-[8.5dvw]"
@@ -331,6 +329,80 @@ function App() {
                   ))}
                 </div>
               )}
+            </div>
+          </div>
+          {/* mobile */}
+          <div className="w-screen px-4 mt-8 flex justify-center">  
+            <div className="w-full min-[600px]:hidden relative right-12.5 overflow-x-auto bg-[#1C1E21] rounded-lg border border-[#282B30]">
+              <div className="min-w-120">
+                {/* Cabeçalho */}
+                <div className="grid grid-cols-5 gap-4 text-[#D2D5DA] font-medium text-sm border-b border-[#282B30] p-4 sticky top-0 bg-[#1C1E21]">
+                  <div>Flag</div>
+                  <div>Name</div>
+                  <div>Population</div>
+                  <div>Area (km²)</div>
+                  <div>Region</div>
+                </div>
+
+                {/* Corpo da Lista */}
+                <div className="text-[#D2D5DA] text-sm">
+                  {countries && countries.length > 0
+                    ? countries.map((c) => (
+                        <div
+                          key={c.cca3 || c.name.common}
+                          className="grid grid-cols-5 gap-4 items-center p-4 hover:bg-[#282B30] transition-colors border-b border-[#212429] last:border-0"
+                        >
+                          <div>
+                            <img
+                              src={c.flags?.svg || c.flags?.png}
+                              alt={c.name.common}
+                              className="w-10 h-7 object-cover rounded-sm"
+                            />
+                          </div>
+                          <span className="font-semibold truncate">
+                            {c.name.common}
+                          </span>
+                          <div className="truncate">{c.population?.toLocaleString()}</div>
+                          <div>{c.area ? c.area.toLocaleString() : "-"}</div>
+                          <div>{c.region}</div>
+                        </div>
+                      ))
+                    : /* Skeletons */
+                      Array.from({ length: 10 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className="grid grid-cols-5 gap-4 p-4 items-center"
+                        >
+                          <Skeleton
+                            variant="rectangular"
+                            width={48}
+                            height={28}
+                            sx={{ bgcolor: "#3A3D42", borderRadius: 0.5 }}
+                          />
+                          <Skeleton
+                            width="80%"
+                            height={20}
+                            sx={{ bgcolor: "#3A3D42" }}
+                          />
+                          <Skeleton
+                            width="60%"
+                            height={20}
+                            sx={{ bgcolor: "#3A3D42" }}
+                          />
+                          <Skeleton
+                            width="60%"
+                            height={20}
+                            sx={{ bgcolor: "#3A3D42" }}
+                          />
+                          <Skeleton
+                            width="50%"
+                            height={20}
+                            sx={{ bgcolor: "#3A3D42" }}
+                          />
+                        </div>
+                      ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
