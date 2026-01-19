@@ -145,16 +145,17 @@ function App() {
             </button>
             {/* Inputs de pesquisa */}
             {/* Mobile */}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") searchCountry();
-              }}
-              className="block lg:hidden lg:w-80 w-[85dvw] h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
-              placeholder="Search by Name, Region..."
-            />
+            <form action="">
+              <input
+                type="text"
+                value={inputValue}
+                enterKeyHint="search"
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="block lg:hidden lg:w-80 w-[85dvw] h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
+                placeholder="Search by Name, Region..."
+              />
+            </form>
             {/* PC */}
 
             <input
