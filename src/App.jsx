@@ -112,6 +112,12 @@ function App() {
     setCountries(Array.isArray(limit) ? limit : []);
   }, [filterUn, filterIndependent, countriesData]);
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.keyCode === 13) {
+      e.preventDefault();
+      searchCountry();
+    }
+  };
   return (
     <>
       <header className="w-full bg-black justify-center flex lg:justify-center lg:items-center">
@@ -150,20 +156,13 @@ function App() {
               placeholder="Search by Name, Region..."
             />
             {/* PC */}
+
             <input
               type="text"
               value={inputValue}
               enterKeyHint="search"
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") 
-                  e.preventDefault()
-                  searchCountry();
-              }} 
-              onBlur={(e) => {
-                if (e.relatedTarget === null) 
-                  searchCountry();
-              }} 
+              onKeyDown={handleKeyDown}
               className="hidden lg:block w-80  h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
               placeholder="Search by Name, Region, Subregion"
             />
