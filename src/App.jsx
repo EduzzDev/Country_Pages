@@ -1,5 +1,5 @@
 import "./index.css";
-import { Search } from "lucide-react";
+import { Currency, Search } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import Hover from "./components/Hover";
 import InputCheck from "./components/InputCheck";
@@ -8,6 +8,8 @@ import Skeleton from "@mui/material/Skeleton";
 import heroImage from "./assets/hero-image.jpg";
 import heroImageSm from "./assets/hero-image-sm.jpg";
 import logoSvg from "./assets/Logo.svg";
+import CountryDetails from "./pages/CountryDetails";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   // Estados (State)
@@ -118,6 +120,60 @@ function App() {
       searchCountry();
     }
   };
+  const navigate = useNavigate();
+
+  async function onSeeDetailsClick(c) {
+    // Se não há países vizinhos, navega normalmente
+    if (!c.borders || c.borders.length === 0) {
+      navigate(
+        `/infoPage?name=${c.name.common}&flag=${
+          (c.flags && c.flags.svg) || c.flags.png
+        }&nameOfficial=${c.name.official}&population=${c.population?.toLocaleString()}&area=${
+          c.area ? c.area.toLocaleString() : "-"
+        }&capital=${c.capital}&subregion=${c.subregion}&languages=${Object.values(c.languages)}&currencies=${
+          Object.values(c.currencies)?.[0]?.name ?? ""
+        }&continents=${c.continents}`,
+      );
+      return;
+    }
+    // Buscar paises vizinhos
+    try {
+      const borderCode = c.borders;
+      const res = await fetch(
+        `https://restcountries.com/v3.1/alpha?codes=${borderCode}`,
+      );
+      const borderCountries = await res.json();
+
+      const neighboursData = borderCountries
+        .map(
+          (countries) =>
+            `${countries.name.common}|${countries.flags.svg || countries.flags.png}`,
+        )
+        .join("~");
+
+      navigate(
+        `/infoPage?name=${c.name.common}&flag=${
+          (c.flags && c.flags.svg) || c.flags.png
+        }&nameOfficial=${c.name.official}&population=${c.population?.toLocaleString()}&area=${
+          c.area ? c.area.toLocaleString() : "-"
+        }&capital=${c.capital}&subregion=${c.subregion}&languages=${Object.values(c.languages)}&currencies=${
+          Object.values(c.currencies)?.[0]?.name ?? ""
+        }&continents=${c.continents}&borders=${neighboursData}`,
+      );
+    } catch (err) {
+      console.error("Erro ao buscar países vizinhos:", err);
+      // Se houver erro, navega sem os dados dos vizinhos
+      navigate(
+        `/infoPage?name=${c.name.common}&flag=${
+          (c.flags && c.flags.svg) || c.flags.png
+        }&nameOfficial=${c.name.official}&population=${c.population?.toLocaleString()}&area=${
+          c.area ? c.area.toLocaleString() : "-"
+        }&capital=${c.capital}&subregion=${c.subregion}&languages=${Object.values(c.languages)}&currencies=${
+          Object.values(c.currencies)?.[0]?.name ?? ""
+        }&continents=${c.continents}`,
+      );
+    }
+  }
   return (
     <>
       <header className="w-full bg-black justify-center flex lg:justify-center lg:items-center">
@@ -145,15 +201,15 @@ function App() {
             </button>
             {/* Inputs de pesquisa */}
             {/* Mobile */}
-              <input
-                type="text"
-                value={inputValue}
-                enterKeyHint="search"
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="block lg:hidden lg:w-80 w-[85dvw] h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
-                placeholder="Search by Name, Region..."
-              />
+            <input
+              type="text"
+              value={inputValue}
+              enterKeyHint="search"
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="block lg:hidden lg:w-80 w-[85dvw] h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
+              placeholder="Search by Name, Region..."
+            />
             {/* PC */}
             <input
               type="text"
@@ -268,13 +324,14 @@ function App() {
               </div>
             </div>
           </div>
-          <div className=" absolute top-148 md:top-130 w-full max-[480px]:hidden  lg:top-45 lg:w-full text-[#D2D5DA] font-medium  flex lg:justify-center lg:pl-10">
-            <div className="md:text-[16px] max-[480px]:w-[125dvw] max-[480px]:text-[10px]  absolute w-full lg:w-[70%] xl:right-5.5 lg:-right-6  grid gap-y-7">
+          <div className=" absolute top-148 md:top-130 2xl:top-50 w-full max-[480px]:hidden  lg:top-45 lg:w-full text-[#D2D5DA] font-medium  flex lg:justify-center lg:pl-10">
+            <div className="md:text-[16px] max-[480px]:w-[125dvw] max-[480px]:text-[10px]  absolute   w-full lg:w-[70%] xl:right-5.5 lg:-right-6 2xl:w-[75%]  grid gap-y-7">
               {countries && countries.length > 0 ? (
                 countries.map((c) => (
                   <div
                     key={c.cca3 || c.ccn3 || c.name.common}
-                    className=" w-full relative -left-2 grid grid-cols-5 gap-x-20 lg:gap-x-5"
+                    onClick={() => onSeeDetailsClick(c)}
+                    className=" w-full relative cursor-pointer 2xl:gap-x-1 -left-2 grid grid-cols-5 gap-x-20 lg:gap-x-5"
                   >
                     <div>
                       <img
@@ -286,13 +343,13 @@ function App() {
                     <span className=" relative   right-12 lg:right-18 font-semibold">
                       {c.name.common}
                     </span>
-                    <div className=" relative  right-17 lg:right-15">
+                    <div className=" relative 2xl:right-18  right-17 lg:right-15">
                       {c.population?.toLocaleString()}
                     </div>
-                    <div className="relative   right-21  lg:right-12">
+                    <div className="relative 2xl:right-20   right-21  lg:right-12">
                       {c.area ? c.area.toLocaleString() : "-"}
                     </div>
-                    <div className="relative  right-30 lg:right-13">
+                    <div className="relative 2xl:right-25 right-30 lg:right-13">
                       {c.region}
                     </div>
                   </div>
