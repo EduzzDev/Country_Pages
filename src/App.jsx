@@ -237,7 +237,6 @@ function App() {
               <div className=" lg:w-50 right-5 left-2 lg:left-0 relative flex lg:grid text-center pb-8 pl-2 grid-cols-2 gap-1 lg:gap-4">
                 <div>
                   <Hover
-                    active={filterRegions === "americas"}
                     onClick={() => filterRegion("americas")}
                   >
                     Americas
@@ -245,7 +244,6 @@ function App() {
                 </div>
                 <div>
                   <Hover
-                    active={filterRegions === "antartic"}
                     onClick={() => filterRegion("antarctic")}
                   >
                     Antarctic
@@ -262,7 +260,6 @@ function App() {
                   </div>
                   <div className=" right-44 sm:right-0 relative">
                     <Hover
-                      active={filterRegions === "asia"}
                       onClick={() => filterRegion("asia")}
                     >
                       Asia
@@ -270,7 +267,6 @@ function App() {
                   </div>
                   <div className=" right-20 bottom-10 sm:bottom-0 sm:right-0  relative">
                     <Hover
-                      active={filterRegions === "europe"}
                       onClick={() => filterRegion("europe")}
                     >
                       Europe
@@ -278,7 +274,6 @@ function App() {
                   </div>
                   <div className=" bottom-20  sm:bottom-0   sm:right-0  relative">
                     <Hover
-                      active={filterRegions === "oceania"}
                       onClick={() => filterRegion("oceania")}
                     >
                       Oceania
@@ -411,6 +406,7 @@ function App() {
                     ? countries.map((c) => (
                         <div
                           key={c.cca3 || c.name.common}
+                           onClick={() => onSeeDetailsClick(c)}
                           className="grid grid-cols-5 gap-4 items-center p-4 hover:bg-[#282B30] transition-colors border-b border-[#212429] last:border-0"
                         >
                           <div>

@@ -38,12 +38,12 @@ function CountryDetails() {
         />
         <img className="absolute  w-50" src={logoSvg} alt="Logo" />
       </header>
-      <main className="w-full flex justify-center  mx-auto px-4 font-[Be_Vietnam_Pro, sans-serif] bg-[#1B1D1F]">
-        <div className="w-160 text-[#D2D5DA] justify-center overflow-x-hiddenflex relative bottom-15 flex-col items-center  text-center left-[2dvw] h-390 lg:h-260  shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]">
+      <main className="w-full  flex justify-center  mx-auto px-4 font-[Be_Vietnam_Pro, sans-serif] bg-[#1B1D1F]">
+        <div className="md:w-160 w-screen text-[#D2D5DA] justify-center overflow-x-hiddenflex relative bottom-15 flex-col items-center  text-center left-[2dvw] h-390 lg:h-260  shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]">
           <img
             src={flag}
             alt={`Flags of S${nameContry}`}
-            className="w-65 h-45 relative bottom-20 left-[26%]  object-cover border-0 rounded-lg "
+            className="w-65 max-[480px]:w-45 max-[480px]:h-30 max-[390px]:left-[12dvw] h-45 relative bottom-20 left-[26%]  object-cover border-0 rounded-lg "
           />
           <h1 className="bottom-15 text-[32px]  font-bold relative">
             {nameContry}
@@ -51,16 +51,16 @@ function CountryDetails() {
           <h2 className="text-[14px] bottom-15 relative font-bold  ">
             {nameOfficial}
           </h2>
-          <div className="flex gap-x-10">
-            <p className=" text-[14px] w-60 p-2 flex -m-6 relative font-semibold justify-center items-center ml-8 bg-[#282B30] rounded-xl">
+          <div className="flex md:gap-x-10 max-[500px]:gap-1">
+            <p className=" text-[14px] md:w-60 max-w-[500px]:w-42 md:p-2  max-[500px]:ml-0 flex md:-m-6 relative font-semibold justify-center items-center md:ml-8  bg-[#282B30] rounded-xl">
               Population{" "}
-              <span className="w-px font-black inline-block h-8 mr-3 ml-4 bg-black"></span>{" "}
-              <span className="ml-1">{population}</span>
+              <span className="w-px max-[500px]:w-[0.1px]  max-[500px]:mr-0 max-[500px]:ml-2 font-black inline-block h-8 mr-3 ml-4 bg-black"></span>{" "}
+              <span className="ml-1 truncate">{population}</span>
             </p>
-            <p className=" text-[14px]  w-50 p-2 flex -m-6 relative font-semibold justify-center items-center ml-8 bg-[#282B30] rounded-xl">
+            <p className=" text-[14px] md:w-60 max-w-[500px]:w-42 md:p-2  max-[500px]:ml-0 flex md:-m-6 relative font-semibold justify-center items-center md:ml-8  bg-[#282B30] rounded-xl">
               Area{"(km²) "}
-              <span className="w-px font-black inline-block h-8 mr-3 ml-4 bg-black"></span>{" "}
-              <span className="ml-1">{area}</span>
+              <span className="w-px max-[500px]:w-[0.1px]  max-[500px]:mr-0 max-[500px]:ml-4 font-black inline-block h-8 mr-3 ml-4 bg-black"></span>{" "}
+              <span className="ml-1 max-[500px]:ml-4  truncate">{area}</span>
             </p>
           </div>
           <div className="flex justify-between items-center p-4 top-10 w-full relative border-[#282B30] border-t border-b">
@@ -92,7 +92,7 @@ function CountryDetails() {
                 neighbor.map((neighbor, index) => (
                   <div
                     key={index}
-                    className="flex flex-col items-center relative mt-8 gap-1"
+                    className="flex flex-col items-center relative mt-5 gap-1"
                   >
                     <img
                       src={neighbor.flagUrl}
@@ -103,28 +103,9 @@ function CountryDetails() {
                   </div>
                 ))
               ) : (
-               <div className="flex space-x-2">
-                  {Array.from({ length: 6 }).map((_, rowIdx) => (
-                    <div
-                      key={rowIdx}
-                      className="flex flex-wrap gap-3 justify-end"
-                    >
-                      {/* Coluna 1 (maior) */}
-                      <div className="flex flex-col items-center gap-1">
-                        <Skeleton
-                          className="lg:w-12.5 max-[480px]:w-[12.3dvw] w-[10dvw]"
-                          variant="rectangular"
-                          height={35}
-                          animation={false}
-                          sx={{ bgcolor: "#3A3D42", borderRadius: 1 }}
-                        />
-                      </div>                     
-                    </div>
-                  ))}
-                </div>
+                <h1>Don't have Neighbouring Countries</h1>
               )}
             </div>
-
           </div>
         </div>
       </main>
