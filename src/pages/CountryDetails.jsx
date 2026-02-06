@@ -103,7 +103,7 @@ function CountryDetails() {
                   </div>
                 ))
               ) : (
-               <div className="flex space-x-2">
+                <div className="flex space-x-2">
                   {Array.from({ length: 6 }).map((_, rowIdx) => (
                     <div
                       key={rowIdx}
@@ -118,13 +118,12 @@ function CountryDetails() {
                           animation={false}
                           sx={{ bgcolor: "#3A3D42", borderRadius: 1 }}
                         />
-                      </div>                     
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </main>
