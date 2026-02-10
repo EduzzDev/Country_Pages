@@ -118,14 +118,6 @@ Você pode buscar:
 - Por região: "africa", "asia", "europe"
 - Combinar filtros para resultados mais específicos
 
-## 🎯 Funcionalidades Futuras
-
-- [ ] Tema escuro/claro
-- [ ] Comparador de países
-- [ ] Mapa interativo
-- [ ] Exportar dados
-- [ ] Adicionar para favoritos
-
 ## 📝 Licença
 
 Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
