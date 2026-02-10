@@ -1,16 +1,149 @@
-# React + Vite
+# 🌍 Country Pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação web moderna para explorar informações detalhadas sobre países do mundo. Busque, filtre e descubra dados sobre cada país, incluindo população, idiomas, moedas e muito mais!
 
-Currently, two official plugins are available:
+## ✨ Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Busca por Nome**: Procure países pelo nome de forma rápida e intuitiva
+- 🗺️ **Filtro por Região**: Explore países por continente (África, Américas, Ásia, Europa, Oceania)
+- 🏛️ **Filtro ONU**: Veja apenas países membros das Nações Unidas
+- 🏴 **Filtro Independência**: Filtre por países independentes
+- 📱 **Design Responsivo**: Interface bonita e funcional em qualquer dispositivo
+- 🎨 **Temas Visuais**: Ícones elegantes e design modern com Tailwind CSS
+- ⚡ **Performance**: Construído com Vite para carregamento ultra-rápido
 
-## React Compiler
+## 🛠️ Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19**: Biblioteca JavaScript para interfaces de usuário
+- **Vite**: Build tool ultrarrápido
+- **React Router**: Navegação entre páginas
+- **Tailwind CSS**: Estilização utilitária
+- **Material-UI**: Componentes prontos
+- **Lucide React**: Ícones de alta qualidade
+- **REST Countries API**: Dados de países
 
-## Expanding the ESLint configuration
+## 📋 Pré-requisitos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Antes de começar, certifique-se de ter instalado:
+
+- **Node.js** (versão 16 ou superior)
+- **npm** ou **yarn**
+
+## 🚀 Instalação e Uso
+
+1. **Clone o repositório**
+
+```bash
+git clone https://github.com/seu-usuario/country_pages.git
+cd country_pages/country_page
+```
+
+2. **Instale as dependências**
+
+```bash
+npm install
+```
+
+3. **Inicie o servidor de desenvolvimento**
+
+```bash
+npm run dev
+```
+
+A aplicação abrirá em `http://localhost:5173` (ou outro porto disponível)
+
+## 📦 Scripts Disponíveis
+
+```bash
+# Iniciar servidor de desenvolvimento com HMR
+npm run dev
+
+# Build para produção
+npm run build
+
+# Preview da build
+npm run preview
+
+# Verificar linting
+npm run lint
+```
+
+## 📁 Estrutura do Projeto
+
+```
+country_page/
+├── src/
+│   ├── components/
+│   │   ├── Hover.jsx          # Componente de interação ao passar mouse
+│   │   └── InputCheck.jsx      # Componente de checkbox para filtros
+│   ├── pages/
+│   │   └── CountryDetails.jsx  # Página de detalhes do país
+│   ├── assets/                 # Imagens e assets
+│   ├── App.jsx                 # Componente principal
+│   ├── main.jsx                # Ponto de entrada
+│   └── index.css               # Estilos globais
+├── public/                      # Arquivos estáticos
+├── package.json                 # Dependências
+├── vite.config.js              # Configuração Vite
+├── tailwind.config.js          # Configuração Tailwind
+└── eslint.config.js            # Configuração ESLint
+```
+
+## 🌐 Como Usar a Aplicação
+
+1. **Buscar por Nome**: Digite o nome de um país na barra de pesquisa
+2. **Filtrar por Região**: Use os checkboxes para selecionar regiões específicas
+3. **Filtros Adicionais**: Marque as opções de "ONU" ou "Independente" para refinar a busca
+4. **Ver Detalhes**: Clique em um país para ver informações completas
+
+## 🔌 API
+
+Essa aplicação utiliza a [REST Countries API](https://restcountries.com/) que fornece dados sobre:
+
+- Nomes em múltiplos idiomas
+- Capital
+- Região e subregião
+- População
+- Área
+- Moedas
+- Idiomas
+- Bandeira
+- E muito mais!
+
+## 💡 Exemplos de Busca
+
+Você pode buscar:
+
+- Por nome do país: "Brasil", "Japan", "France"
+- Por região: "africa", "asia", "europe"
+- Combinar filtros para resultados mais específicos
+
+## 🎯 Funcionalidades Futuras
+
+- [ ] Tema escuro/claro
+- [ ] Comparador de países
+- [ ] Mapa interativo
+- [ ] Exportar dados
+- [ ] Adicionar para favoritos
+
+## 📝 Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 👨‍💻 Desenvolvedor
+
+Desenvolvido com ❤️ por Eduardo
+
+## 📞 Suporte
+
+Se tiver dúvidas ou encontrar problemas, abra uma [issue](https://github.com/seu-usuario/country_pages/issues)
