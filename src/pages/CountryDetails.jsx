@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 
 function CountryDetails() {
+  //parametros usados na aplicação seja para pegar pela url ou usar o UsearchParams
   const [searchParams] = useSearchParams();
   const nameContry = searchParams.get("name");
   const flag = searchParams.get("flag");
@@ -19,6 +20,7 @@ function CountryDetails() {
   const currencies = currenciesParam?.split(",") ?? [];
   const continents = searchParams.get("continents");
   const bordersParams = searchParams.get("borders");
+  // separando entre o nome e url da bandeira
   const neighbor = bordersParams
     ? bordersParams.split("~").map((item) => {
         const [name, flagUrl] = item.split("|");
@@ -28,6 +30,7 @@ function CountryDetails() {
 
   return (
     <>
+      {/* Imagem de fundo do globo e logo do wold ranks */}
       <header className="w-full  bg-black flex justify-center items-center">
         <img
           className="relative h-90 top-0  object-cover  w-full"
@@ -38,9 +41,14 @@ function CountryDetails() {
         />
         <img className="absolute  w-50" src={logoSvg} alt="Logo" />
       </header>
+
       <main className="w-full flex justify-center  mx-auto px-4 font-[Be_Vietnam_Pro, sans-serif] bg-[#1B1D1F]">
-        <div className="min-[600px]:w-160 w-full text-[#D2D5DA] justify-center overflow-x-hiddenflex relative bottom-15 flex-col
-         items-center  text-center left-[2dvw] h-390 lg:h-260  shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]">
+        {/* Imagem da bandeira e nomes dos países sendo pegados pela url*/}
+        <div
+          className="min-[600px]:w-160 w-full text-[#D2D5DA] justify-center overflow-x-hiddenflex relative bottom-15 flex-col
+         items-center  text-center left-[2dvw] h-390 lg:h-260  shadow-2xl border-double border border-[#282B30]
+          rounded-[15px] p-8 bg-[#1B1D1F]"
+        >
           <img
             src={flag}
             alt={`Flags of S${nameContry}`}
@@ -52,6 +60,8 @@ function CountryDetails() {
           <h2 className="text-[14px] bottom-15 relative font-bold  ">
             {nameOfficial}
           </h2>
+
+          {/* dois campos separado que informam a população e area do paises  */}
           <div className="flex min-[600px]:flex-row flex-col min-[600px]:gap-x-10 gap-y-2">
             <p className=" text-[14px] min-[600px]:w-60 p-2  max-[500px]:ml-0 flex md:-m-6 relative font-semibold justify-center items-center md:ml-8  bg-[#282B30] rounded-xl">
               Population{" "}
@@ -64,28 +74,57 @@ function CountryDetails() {
               <span className="ml-1 ">{area}</span>
             </p>
           </div>
-          <div className="flex justify-between items-center p-4 top-10 w-full relative border-[#282B30] border-t border-b">
+
+          {/* três campos que informam a capital, subregião e idioma */}
+          <div
+            className="flex justify-between items-center p-4 
+          top-10 w-full relative border-[#282B30] border-t border-b"
+          >
             <span className="font-medium">Capital</span>
             <span>{capital}</span>
           </div>
-          <div className="flex justify-between items-center p-4 top-10 w-full relative border-[#282B30] border-t border-b">
+          <div
+            className="flex justify-between items-center p-4 
+          top-10 w-full relative border-[#282B30] border-t border-b"
+          >
             <span className="font-medium min-[600px]:mr-0 mr-5">Subregion</span>
             <span>{subregion}</span>
           </div>
-          <div className="flex justify-between items-center p-4 top-10 w-full relative border-[#282B30] border-t border-b">
+          <div
+            className="flex justify-between items-center p-4 
+          top-10 w-full relative border-[#282B30] border-t border-b"
+          >
             <span className="font-medium min-[600px]:mr-0 mr-5">Language</span>
             <span className="tracking-tigh flex gap-2">
               {languages.join(", ")}
             </span>
           </div>
-          <div className="flex justify-between items-center p-4 top-10 w-full relative border-[#282B30] border-t border-b">
-            <span className="font-medium min-[600px]:mr-0 mr-5">Currencies</span>
+
+          {/* Campo que informa as moedas ou moeda do pais */}
+          <div
+            className="flex justify-between items-center 
+          p-4 top-10 w-full relative border-[#282B30] 
+          border-t border-b"
+          >
+            <span className="font-medium min-[600px]:mr-0 mr-5">
+              Currencies
+            </span>
             <span className="tracking-tigh flex gap-2">{currencies}</span>
           </div>
-          <div className="flex justify-between items-center p-4 top-10 w-full relative border-[#282B30] border-t border-b">
-            <span className="font-medium min-[600px]:mr-0 mr-5">Continents</span>
+
+          {/* Campo informa o continente*/}
+          <div
+            className="flex justify-between items-center p-4 
+          top-10 w-full relative border-[#282B30] 
+          border-t border-b"
+          >
+            <span className="font-medium min-[600px]:mr-0 mr-5">
+              Continents
+            </span>
             <span className="tracking-tigh flex gap-2">{continents}</span>
           </div>
+
+          {/*  Renderiza países vizinhos a partir do array neighbor  e um fallback */}
           <div className="flex flex-col justify-between items-baseline  p-4 top-10 w-full relative border-[#282B30] border-t border-b">
             <span className="font-medium ">Neighbouring Countries</span>
             <div className="flex flex-wrap gap-3 j">

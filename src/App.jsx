@@ -113,7 +113,8 @@ function App() {
     const limit = filtered.slice(0, 13);
     setCountries(Array.isArray(limit) ? limit : []);
   }, [filterUn, filterIndependent, countriesData]);
-
+  
+  // Permite buscar o país usando a tecla Enter
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.keyCode === 13) {
       e.preventDefault();
@@ -236,16 +237,12 @@ function App() {
               <h3 className="text-[14px] pb-2 font-bold">Region</h3>
               <div className=" lg:w-50 right-5 left-2 lg:left-0 relative flex lg:grid text-center pb-8 pl-2 grid-cols-2 gap-1 lg:gap-4">
                 <div>
-                  <Hover
-                    onClick={() => filterRegion("americas")}
-                  >
+                  <Hover onClick={() => filterRegion("americas")}>
                     Americas
                   </Hover>
                 </div>
                 <div>
-                  <Hover
-                    onClick={() => filterRegion("antarctic")}
-                  >
+                  <Hover onClick={() => filterRegion("antarctic")}>
                     Antarctic
                   </Hover>
                 </div>
@@ -259,23 +256,13 @@ function App() {
                     </Hover>
                   </div>
                   <div className=" right-44 sm:right-0 relative">
-                    <Hover
-                      onClick={() => filterRegion("asia")}
-                    >
-                      Asia
-                    </Hover>
+                    <Hover onClick={() => filterRegion("asia")}>Asia</Hover>
                   </div>
                   <div className=" right-20 bottom-10 sm:bottom-0 sm:right-0  relative">
-                    <Hover
-                      onClick={() => filterRegion("europe")}
-                    >
-                      Europe
-                    </Hover>
+                    <Hover onClick={() => filterRegion("europe")}>Europe</Hover>
                   </div>
                   <div className=" bottom-20  sm:bottom-0   sm:right-0  relative">
-                    <Hover
-                      onClick={() => filterRegion("oceania")}
-                    >
+                    <Hover onClick={() => filterRegion("oceania")}>
                       Oceania
                     </Hover>
                   </div>
@@ -406,7 +393,7 @@ function App() {
                     ? countries.map((c) => (
                         <div
                           key={c.cca3 || c.name.common}
-                           onClick={() => onSeeDetailsClick(c)}
+                          onClick={() => onSeeDetailsClick(c)}
                           className="grid grid-cols-5 gap-4 items-center p-4 hover:bg-[#282B30] transition-colors border-b border-[#212429] last:border-0"
                         >
                           <div>
