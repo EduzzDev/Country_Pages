@@ -113,7 +113,7 @@ function App() {
     const limit = filtered.slice(0, 13);
     setCountries(Array.isArray(limit) ? limit : []);
   }, [filterUn, filterIndependent, countriesData]);
-  
+
   // Permite buscar o país usando a tecla Enter
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.keyCode === 13) {
@@ -191,12 +191,21 @@ function App() {
           alt="Logo"
         />
       </header>
-      <main className="w-full lg:min-w-5xl mx-auto px-4 font-[Be_Vietnam_Pro, sans-serif] bg-[#1B1D1F]">
-        <div className="lg:w-[95dvw] overflow-x-hidden w-[90dvw] bottom-25 left-[2dvw] h-390 lg:h-260  lg:flex-col lg:bottom-15 relative lg:ml-6.5 shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]">
-          <h2 className="text-[#D2D5DA] -ml-4 text-[20px] lg:text-[22px] lg:ml-6 font-medium">
+      <main className="w-full  flex justify-center font-[Be_Vietnam_Pro, sans-serif] bg-[#1B1D1F]">
+        <div
+          className="lg:w-[95dvw] overflow-x-hidden w-[95dvw] bottom-25  h-390 lg:h-260  lg:flex-col lg:bottom-15 relative 
+        lg:ml-2.5  shadow-2xl border-double border border-[#282B30] rounded-[15px] p-8 bg-[#1B1D1F]"
+        >
+          <h2
+            className="text-[#D2D5DA] -ml-4 
+          text-[20px] lg:text-[22px] lg:ml-6 font-medium"
+          >
             Found 234 countries
           </h2>
-          <div className="flex top-6 lg:top-0 lg:w-full w-screen relative right-11 lg:-mt-8 lg:justify-end-safe lg:items-center">
+          <div
+            className="flex top-6 lg:top-0 lg:w-full w-screen 
+          relative right-11 lg:-mt-8 lg:justify-end-safe lg:items-center"
+          >
             <button className="relative z-10 left-8" aria-label="Search">
               <Search className="text-[#D2D5DA] w-5.5  h-7" />
             </button>
@@ -208,7 +217,8 @@ function App() {
               enterKeyHint="search"
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="block lg:hidden lg:w-80 w-[85dvw] h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
+              className="block lg:hidden lg:w-80 w-[88dvw] h-11 text-[#D2D5DA] pl-10 ml-0.5 rounded-[10px] placeholder:text-[14.5px]
+               bg-[#282B30] placeholder-[#D2D5DA] font-medium"
               placeholder="Search by Name, Region..."
             />
             {/* PC */}
@@ -218,20 +228,25 @@ function App() {
               enterKeyHint="search"
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="hidden lg:block w-80  h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px] bg-[#282B30] placeholder-[#D2D5DA] font-medium"
+              className="hidden lg:block w-80 h-11 text-[#D2D5DA] pl-10 rounded-[10px] placeholder:text-[14.5px]
+               bg-[#282B30] placeholder-[#D2D5DA] font-medium"
               placeholder="Search by Name, Region, Subregion"
             />
           </div>
           <div className="relative w-screen right-2 top-15 lg:top-0 lg:flex lg:flex-col text-[#D2D5DA] lg:ml-6 lg:mt-8">
             <h3 className=" text-[14px] pb-2 font-bold ">Sort by</h3>
             <div className="flex lg:pb-9 flew-row">
-              <select className="lg:w-60 w-[85dvw] lg:right-0 right-3 relative h-12 appearance-none p-2 pl-5 text-[16px] font-medium border-[#282B30] border-double border-2 rounded-[9px]">
+              <select
+                className="lg:w-60 w-[87dvw] lg:right-0 right-3 relative h-12 
+              appearance-none p-2 pl-5 text-[16px] font-medium border-[#282B30] 
+              border-double border-2 rounded-[9px]"
+              >
                 <option value="Population">Population</option>
               </select>
-              <ChevronDown className=" size-6 relative -ml-10 -bottom-2.5" />
+              <ChevronDown className=" size-6 relative -ml-12 -bottom-2.5" />
             </div>
             <section
-              className="md:top-0  lg:right-0 relative top-9 right-1"
+              className="min-[600px]:top-1  lg:right-0 relative top-[5dvh] right-1"
               aria-labelledby="region-label"
             >
               <h3 className="text-[14px] pb-2 font-bold">Region</h3>
@@ -246,7 +261,7 @@ function App() {
                     Antarctic
                   </Hover>
                 </div>
-                <div className="lg:w-50 block sm:flex lg:grid grid-cols-3 gap-1 sm:gap-4">
+                <div className="lg:w-50 block min-[600px]:flex lg:grid grid-cols-3 gap-1 sm:gap-4">
                   <div>
                     <Hover
                       active={filterRegions === "africa"}
@@ -255,20 +270,20 @@ function App() {
                       Africa
                     </Hover>
                   </div>
-                  <div className=" right-44 sm:right-0 relative">
+                  <div className=" right-44 min-[600px]:right-0 relative">
                     <Hover onClick={() => filterRegion("asia")}>Asia</Hover>
                   </div>
-                  <div className=" right-20 bottom-10 sm:bottom-0 sm:right-0  relative">
+                  <div className=" right-20 bottom-10 min-[600px]:bottom-0 min-[600px]:right-0  relative">
                     <Hover onClick={() => filterRegion("europe")}>Europe</Hover>
                   </div>
-                  <div className=" bottom-20  sm:bottom-0   sm:right-0  relative">
+                  <div className=" bottom-20  min-[600px]:bottom-0   min-[600px]:right-0  relative">
                     <Hover onClick={() => filterRegion("oceania")}>
                       Oceania
                     </Hover>
                   </div>
                 </div>
               </div>
-              <div className="relative bottom-22 md:bottom-0 lg:bottom-0">
+              <div className="relative bottom-22 min-[600px]:bottom-6 lg:bottom-0">
                 <h3 className=" relative text-[14px] font-medium mb-4">
                   Status
                 </h3>
@@ -287,8 +302,14 @@ function App() {
               </div>
             </section>
           </div>
-          <div className="flex justify-center w-full max-[480px]:hidden absolute lg:top-12 xl:top-15 mt-16 text-[#D2D5DA] font-medium  pl-18">
-            <div className=" text-[3.8dvw] min-[500px]:text-[14px] lg:text-[14px]  lg:w-[70%] w-full bottom-10 md:bottom-0 right-22 lg:right-0 lg:left-25 relative grid grid-cols-5 gap-x-6 lg:gap-x-24 border-b border-b-[#282B30] pb-6">
+          {/* Pc e tablet */}
+          <div className="flex justify-center w-full 
+          max-[600px]:hidden absolute lg:top-20 xl:top-15 lg:mt-[5%]
+           top-[28%] text-[#D2D5DA] font-medium  pl-18">
+            <div
+              className=" text-[3.8dvw] min-[500px]:text-[14px] lg:text-[14px]  lg:w-[70%] w-full min-[600px]:bottom-0 
+            right-22 lg:right-0 lg:left-25 relative grid grid-cols-5 gap-x-6 lg:gap-x-24 border-b border-b-[#282B30] pb-6"
+            >
               <div className=" relative min-[600px]:left-5 lg:left-1">
                 <h3>Flag</h3>
               </div>
@@ -306,8 +327,15 @@ function App() {
               </div>
             </div>
           </div>
-          <div className=" absolute top-148 md:top-130 2xl:top-50 w-full max-[480px]:hidden  lg:top-45 lg:w-full text-[#D2D5DA] font-medium  flex lg:justify-center lg:pl-10">
-            <div className="md:text-[16px] max-[480px]:w-[125dvw] max-[480px]:text-[10px]  absolute   w-full lg:w-[70%] xl:right-5.5 lg:-right-6 2xl:w-[75%]  grid gap-y-7">
+          <div
+            className=" absolute top-148 min-[600px]:top-122 2xl:top-50 w-full max-[480px]:hidden  
+          lg:top-45 lg:w-full text-[#D2D5DA] font-medium  flex lg:justify-center lg:pl-10"
+          >
+            <div
+              className="md:text-[16px] 
+            max-[480px]:text-[10px]  absolute  w-full lg:w-[70%] 
+            xl:right-5.5 lg:-right-6 2xl:w-[75%]  grid gap-y-7"
+            >
               {countries && countries.length > 0 ? (
                 countries.map((c) => (
                   <div
@@ -375,7 +403,7 @@ function App() {
             </div>
           </div>
           {/* mobile */}
-          <div className="w-screen px-4 mt-8 flex justify-center">
+          <div className="w-[110dvw] px-4 mt-8 flex justify-center">
             <div className="w-full min-[600px]:hidden relative right-12.5 overflow-x-auto bg-[#1C1E21] rounded-lg border border-[#282B30]">
               <div className="min-w-120">
                 {/* Cabeçalho */}
