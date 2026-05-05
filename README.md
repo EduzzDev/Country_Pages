@@ -1,141 +1,112 @@
 # 🌍 Country Pages
 
-Uma aplicação web moderna para explorar informações detalhadas sobre países do mundo. Busque, filtre e descubra dados sobre cada país, incluindo população, idiomas, moedas e muito mais!
+> Aplicação React + Vite para explorar países com busca, filtros e detalhes completos.
 
-## ✨ Características
+[![Vite](https://img.shields.io/badge/Vite-FF005C?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-- 🔍 **Busca por Nome**: Procure países pelo nome de forma rápida e intuitiva
-- 🗺️ **Filtro por Região**: Explore países por continente (África, Américas, Ásia, Europa, Oceania)
-- 🏛️ **Filtro ONU**: Veja apenas países membros das Nações Unidas
-- 🏴 **Filtro Independência**: Filtre por países independentes
-- 📱 **Design Responsivo**: Interface bonita e funcional em qualquer dispositivo
-- 🎨 **Temas Visuais**: Ícones elegantes e design modern com Tailwind CSS
-- ⚡ **Performance**: Construído com Vite para carregamento ultra-rápido
+---
 
-## 🛠️ Tecnologias
+## ✨ Por que este projeto?
 
-- **React 19**: Biblioteca JavaScript para interfaces de usuário
-- **Vite**: Build tool ultrarrápido
-- **React Router**: Navegação entre páginas
-- **Tailwind CSS**: Estilização utilitária
-- **Material-UI**: Componentes prontos
-- **Lucide React**: Ícones de alta qualidade
-- **REST Countries API**: Dados de países
+Uma interface leve e moderna para consultar dados de países a partir da [REST Countries API](https://restcountries.com/).
+A proposta é ensinar e demonstrar um front-end responsivo com React, filtros dinâmicos e navegação clara.
 
-## 📋 Pré-requisitos
+---
 
-Antes de começar, certifique-se de ter instalado:
+## 🚀 Funcionalidades principais
 
-- **Node.js** (versão 16 ou superior)
-- **npm** ou **yarn**
+- 🔎 Busca rápida por nome de país
+- 🌍 Filtros por região (África, Américas, Ásia, Europa, Oceania)
+- ✅ Filtro de países membros da ONU
+- 🟢 Filtro de países independentes
+- 📊 Página de detalhes com informações completas
+- 📱 Layout responsivo para desktop e dispositivos móveis
+- ⚡ Build rápido com Vite
 
-## 🚀 Instalação e Uso
+---
 
-1. **Clone o repositório**
+## 🧰 Tecnologias usadas
 
-```bash
-git clone https://github.com/seu-usuario/country_pages.git
-cd country_pages/country_page
-```
+| Front-end | Estilização  | Componentes           | Outros             |
+| --------- | ------------ | --------------------- | ------------------ |
+| React 19  | Tailwind CSS | MUI (`@mui/material`) | React Router Dom   |
+| Vite      | Lucide React | ESLint                | REST Countries API |
 
-2. **Instale as dependências**
+---
+
+## 🚧 Pré-requisitos
+
+- Node.js 16+ instalado
+- npm ou yarn disponível
+
+---
+
+## ▶️ Como rodar localmente
 
 ```bash
 npm install
-```
-
-3. **Inicie o servidor de desenvolvimento**
-
-```bash
 npm run dev
 ```
 
-A aplicação abrirá em `http://localhost:5173` (ou outro porto disponível)
+Acesse `http://localhost:5173` no navegador.
 
-## 📦 Scripts Disponíveis
+---
 
-```bash
-# Iniciar servidor de desenvolvimento com HMR
-npm run dev
+## 📁 Estrutura do projeto
 
-# Build para produção
-npm run build
+- `public/` — arquivos estáticos
+- `src/` — código-fonte
+  - `assets/` — imagens e recursos
+  - `components/` — componentes reutilizáveis
+    - `Hover.jsx`
+    - `InputCheck.jsx`
+  - `pages/` — páginas da aplicação
+    - `CountryDetails.jsx`
+  - `App.jsx` — componente principal
+  - `main.jsx` — ponto de entrada
+  - `index.css` / `App.css` — estilos globais
+- `package.json` — dependências e scripts
+- `tailwind.config.js` — configuração Tailwind
+- `vite.config.js` — configuração Vite
+- `eslint.config.js` — regras de lint
 
-# Preview da build
-npm run preview
+---
 
-# Verificar linting
-npm run lint
-```
+## 📝 Uso do aplicativo
 
-## 📁 Estrutura do Projeto
+1. Digite o nome de um país na barra de pesquisa
+2. Selecione as regiões desejadas
+3. Ative os filtros de ONU e independência
+4. Clique em um país para ver os detalhes completos
 
-```
-country_page/
-├── src/
-│   ├── components/
-│   │   ├── Hover.jsx          # Componente de interação ao passar mouse
-│   │   └── InputCheck.jsx      # Componente de checkbox para filtros
-│   ├── pages/
-│   │   └── CountryDetails.jsx  # Página de detalhes do país
-│   ├── assets/                 # Imagens e assets
-│   ├── App.jsx                 # Componente principal
-│   ├── main.jsx                # Ponto de entrada
-│   └── index.css               # Estilos globais
-├── public/                      # Arquivos estáticos
-├── package.json                 # Dependências
-├── vite.config.js              # Configuração Vite
-├── tailwind.config.js          # Configuração Tailwind
-└── eslint.config.js            # Configuração ESLint
-```
+---
 
-## 🌐 Como Usar a Aplicação
+## 💡 Dicas rápidas
 
-1. **Buscar por Nome**: Digite o nome de um país na barra de pesquisa
-2. **Filtrar por Região**: Use os checkboxes para selecionar regiões específicas
-3. **Filtros Adicionais**: Marque as opções de "ONU" ou "Independente" para refinar a busca
-4. **Ver Detalhes**: Clique em um país para ver informações completas
+- Use parte do nome para pesquisar mais rápido
+- Combine filtros para encontrar exatamente o que precisa
+- Explore o modo desktop para ver todos os dados do país
 
-## 🔌 API
+---
 
-Essa aplicação utiliza a [REST Countries API](https://restcountries.com/) que fornece dados sobre:
+## 🤝 Contribuições
 
-- Nomes em múltiplos idiomas
-- Capital
-- Região e subregião
-- População
-- Área
-- Moedas
-- Idiomas
-- Bandeira
-- E muito mais!
+Contribuições são bem-vindas! Sinta-se livre para enviar melhorias, correções ou novas ideias.
 
-## 💡 Exemplos de Busca
+1. Faça fork do repositório
+2. Crie uma branch nova
+3. Abra um pull request
 
-Você pode buscar:
+---
 
-- Por nome do país: "Brasil", "Japan", "France"
-- Por região: "africa", "asia", "europe"
-- Combinar filtros para resultados mais específicos
+## 📄 Licença
 
-## 📝 Licença
+Projeto aberto e gratuito para uso.
 
-Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
+---
 
-## 🤝 Contribuindo
+## 👨‍💻 Autor
 
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 👨‍💻 Desenvolvedor
-
-Desenvolvido com ❤️ por Eduardo
-
-## 📞 Suporte
-
-Se tiver dúvidas ou encontrar problemas, abra uma [issue](https://github.com/seu-usuario/country_pages/issues)
+Desenvolvido por Eduardo
