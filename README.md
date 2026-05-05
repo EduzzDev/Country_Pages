@@ -274,13 +274,3 @@ Encontrou um bug? Tem sugestões? Crie uma issue no repositório!
 
 
 ---
-
-## 📄 Licença
-
-Projeto aberto e gratuito para uso.
-
----
-
-## 👨‍💻 Autor
-
-Desenvolvido por Eduardo
